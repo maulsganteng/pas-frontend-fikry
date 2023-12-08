@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container my-4">
+    <div class="container my-4">
         <div id="alert">
             @include('components.alert')
         </div>
@@ -26,16 +26,17 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @php $no = 1; @endphp
                             @foreach ($allBerita as $item)
                                 <tr>
-                                    <th scope="row">1</th>
+                                    <th>{{ $no++ }}</th>
                                     <td>{{ Str::limit($item->judul, 10) }}</td>
                                     <td>{!! Str::words($item->isi, 20) !!}</td>
                                     <td>{{ $item->kategori->nama_kategori }}</td>
                                     <td>{{ $item->user->name }}</td>
                                     <td>
                                         <div class="d-flex">
-                                            <a href="{{-- route('berita.show',$item->id) --}}" class="btn btn-warning btn-sm"><i
+                                            <a href="{{-- route('berita.show',$item->id) --}}" class="btn btn-warning btn-sm disabled"><i
                                                     class="bi bi-eye"></i>Preview</a>
                                             <a href="{{ route('berita.edit', $item->id) }}"
                                                 class="btn btn-success btn-sm ms-1"><i

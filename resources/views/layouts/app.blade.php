@@ -6,11 +6,10 @@
         @auth
             <main class="d-flex flex-nowrap">
                 @include('layouts.navbar.auth.sidenav')
-                @include('layouts.navbar.auth.topnav')
+                {{-- @include('layouts.navbar.auth.topnav') --}}
                 @yield('content')
             </main>
         @endauth
-
         @guest
             @if (in_array(request()->route()->getName(),
                     ['login', 'register', 'password.request', 'password.email', 'password.reset']))
@@ -23,11 +22,8 @@
                     @yield('content')
                 </main>
             @endif
+            @include('layouts.footer.guest.footer')
         @endguest
-        {{-- @include('layouts.footer.guest.footer') --}}
     </div>
-
-    @include('layouts.frame.foot')
 </body>
-
-</html>
+@include('layouts.frame.foot')

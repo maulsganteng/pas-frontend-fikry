@@ -16,7 +16,7 @@ class KategoriController extends Controller
     public function store()
     {
         $attributes = request()->validate([
-            'nama_kategori' => 'required|max:50|min:5|unique:kategoris,nama_kategori',
+            'nama_kategori' => 'required|max:50|min:3|unique:kategoris,nama_kategori',
         ], [
             'nama_kategori.required' => 'Kategori nama cannot be blank',
             'nama_kategori.unique' => 'The Kategori nama has already been taken.'
@@ -27,14 +27,14 @@ class KategoriController extends Controller
 
     public function edit($id)
     {
-        $kategori     = Kategori::findOrFail($id);
+        $kategori = Kategori::findOrFail($id);
         return view('admin.kategori.edit', compact('kategori'));
     }
 
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nama_kategori'          => 'required',
+            'nama_kategori' => 'required',
         ]);
 
         $kategori = Kategori::find($id);

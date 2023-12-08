@@ -19,7 +19,7 @@ class BeritaController extends Controller
     public function create()
     {
         $kategori = Kategori::get();
-        $user     = User::get();
+        $user = User::get();
         return view('admin.berita.create', compact('kategori', 'user'));
     }
 
@@ -27,11 +27,11 @@ class BeritaController extends Controller
     {
 
         $request->validate([
-            'user_id'       => '',
-            'kategori_id'   => 'required',
-            'judul'         => 'required',
-            'gambar'        => 'required|image|mimes:jpg,png,jpeg',
-            'isi'           => 'required'
+            'user_id' => '',
+            'kategori_id' => 'required',
+            'judul' => 'required',
+            'gambar' => 'required|image|mimes:jpg,png,jpeg',
+            'isi' => 'required'
         ]);
 
 
@@ -41,11 +41,11 @@ class BeritaController extends Controller
 
         $berita = new Berita;
 
-        $berita->user_id     = auth()->user()->id;
+        $berita->user_id = auth()->user()->id;
         $berita->kategori_id = $request->kategori_id;
-        $berita->judul       = $request->judul;
-        $berita->gambar      = $gambarName;
-        $berita->isi         = $request->isi;
+        $berita->judul = $request->judul;
+        $berita->gambar = $gambarName;
+        $berita->isi = $request->isi;
 
         $berita->save();
 
@@ -55,19 +55,19 @@ class BeritaController extends Controller
     public function edit($id)
     {
         $kategori = Kategori::get();
-        $user     = User::get();
-        $berita   = Berita::findOrFail($id);
+        $user = User::get();
+        $berita = Berita::findOrFail($id);
         return view('admin.berita.edit', compact('berita', 'kategori', 'user'));
     }
 
     public function update(Request $request, $id)
     {
         $request->validate([
-            'user_id'       => '',
-            'kategori_id'   => 'required',
-            'judul'         => 'required',
-            'gambar'        => 'image|mimes:jpg,png,jpeg',
-            'isi'           => 'required'
+            'user_id' => '',
+            'kategori_id' => 'required',
+            'judul' => 'required',
+            'gambar' => 'image|mimes:jpg,png,jpeg',
+            'isi' => 'required'
         ]);
 
 
@@ -81,11 +81,11 @@ class BeritaController extends Controller
 
             $request->gambar->move(public_path('img/gambar'), $gambarName);
 
-            $berita->user_id     = auth()->user()->id;
+            $berita->user_id = auth()->user()->id;
             $berita->kategori_id = $request->kategori_id;
-            $berita->judul       = $request->judul;
-            $berita->gambar      = $gambarName;
-            $berita->isi         = $request->isi;
+            $berita->judul = $request->judul;
+            $berita->gambar = $gambarName;
+            $berita->isi = $request->isi;
 
             $berita->save();
 
@@ -93,10 +93,10 @@ class BeritaController extends Controller
         } else {
             $berita = Berita::find($id);
 
-            $berita->user_id     = auth()->user()->id;
+            $berita->user_id = auth()->user()->id;
             $berita->kategori_id = $request->kategori_id;
-            $berita->judul       = $request->judul;
-            $berita->isi         = $request->isi;
+            $berita->judul = $request->judul;
+            $berita->isi = $request->isi;
 
             $berita->save();
 

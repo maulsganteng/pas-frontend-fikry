@@ -22,7 +22,7 @@
                                 <div id="isi" style="height:350px;"></div>
                                 <textarea class="form-control" name="isi" id="content-textarea" hidden style="display: none;"></textarea>
                                 @error('isi')
-                                    <p class='text-danger mb-0 text-xs pt-1'> {{ $message }} </p>
+                                    <p class='text-danger mb-0 text-xs pt-1'> {{ $message }}</p>
                                 @enderror
                             </div>
                         </div>

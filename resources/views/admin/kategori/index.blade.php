@@ -11,7 +11,7 @@
                     <h5 class="fw-bold my-auto">Tambah Kategori</h5>
                 </div>
                 <div class="card-body">
-                    <form action="{{route('kategori.perform')}}" method="POST">
+                    <form action="{{ route('kategori.perform') }}" method="POST">
                         @csrf
                         <div class="mb-3">
                             <label for="namaJudul" class="form-label">Nama Kategori</label>
@@ -39,20 +39,22 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @php $no = 1; @endphp
                             @foreach ($allKategori as $item)
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>{{$item->nama_kategori}}</td>
-                                <td>
-                                    <a href="{{route('kategori.edit',$item->id)}}" class="btn btn-sm btn-success">edit</a>
-                                    <form class="d-inline" onsubmit="return confirm('sure to delete this data')"
+                                <tr>
+                                    <th>{{ $no++ }}</th>
+                                    <td>{{ $item->nama_kategori }}</td>
+                                    <td>
+                                        <a href="{{ route('kategori.edit', $item->id) }}"
+                                            class="btn btn-sm btn-success">edit</a>
+                                        <form class="d-inline" onsubmit="return confirm('sure to delete this data')"
                                             action="{{ route('kategori.delete', $item->id) }}" method="post">
                                             @csrf
                                             @method('DELETE')
                                             <button class="btn btn-sm btn-danger mb-0">delete</button>
                                         </form>
-                                </td>
-                            </tr>
+                                    </td>
+                                </tr>
                             @endforeach
                         </tbody>
                     </table>

@@ -1,7 +1,15 @@
-<footer class="py-5 text-center text-body-secondary bg-body-tertiary border mt-5 mb-0">
-    <p>Blog template built for <a href="https://getbootstrap.com/">Bootstrap</a> by <a
-            href="https://twitter.com/mdo">@mdo</a>.</p>
-    <p class="mb-0">
-        <a href="#">Back to top</a>
-    </p>
-</footer>
+<div class="container-flex">
+    <footer class="text-center bg-body-tertiary shadow-lg" style="background-color: #ffffff">
+        <div class="container">
+            <hr class="my-5">
+            <section class="">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-lg-8">
+                        <h4>
+                            <span style="color: red">Portal </span>Berita
+                        </h4>
+                    </div>
+                </div>
+            </section>
+    </footer>
+</div>
